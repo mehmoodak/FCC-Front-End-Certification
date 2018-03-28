@@ -12,6 +12,8 @@ const clean = require('gulp-clean');
 const browserSync = require('browser-sync').create();
 
 let environment = 'development';
+// let environment = 'production';
+
 let location = './build/';
 
 if(environment === 'production'){
