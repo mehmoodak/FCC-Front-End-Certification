@@ -1,4 +1,4 @@
-/*===================================== Buttons =====================================*/
+/* ------------------- Buttons -------------------- */
 
 .btn {
   padding: 10px 15px;
@@ -6,6 +6,10 @@
   border-radius: 3px;
   color: white;
   cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0;
 }
 
 .btn-icons {

@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Random Quote Machine</title>
-  <link rel="stylesheet" href="css/style.css">
-  <!--<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">-->
-  <link rel="stylesheet" href="plugins/font-awesome/css/fontawesome-all.min.css">
-
-  <script type="text/javascript" src="js/bundle.js" defer></script>
-  <!--<script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js" defer ></script>-->
-
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/fontawesome-all.min.css">
+  <script type="text/javascript" src="js/jquery.min.js" defer></script>
+  <script type="text/javascript" src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -18,19 +15,23 @@
     <div class="quote-text">
       <div id="quote">
         <span class="quote-symbol"><i class="fas fa-quote-left"></i></span>
-        We are all atheists about most of the gods humanity has ever believed in. Some of us just go one god further.
+        <p> Loading Quote.... </p>
       </div>
     </div>
     <div class="quote-author">
       <div id="author">
-        - Richard Dawkins
+        - Quote Author
       </div>
     </div>
     <div class="quote-actions">
       <div class="quote-sharing">
-        <button id="twitter-share" class="btn-icons">
+        <a id="tweet" class="btn-icons" target="_blank"
+           href="https://twitter.com/intent/tweet?text=Random%20Quote%20Generator">
           <i class="fab fa-twitter"></i>
-        </button>
+        </a>
+      </div>
+      <div class="loading">
+        <i class="fas fa-spinner fa-spin fa-2x"></i>
       </div>
       <div>
         <button id="new-quote" class="btn">
@@ -46,7 +47,9 @@
   </div>
 </div>
 
-<a id="source-link" target="_blank" class="btn-icons" href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/9-%20Intermediate%20Front%20End%20Projects/Build%20a%20Random%20Quote%20Machine"> <i class="fab fa-github"></i></a>
+<a id="source-link" target="_blank" class="btn-icons"
+   href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/9-%20Intermediate%20Front%20End%20Projects/Build%20a%20Random%20Quote%20Machine">
+  <i class="fab fa-github"></i></a>
 
 </body>
 </html>

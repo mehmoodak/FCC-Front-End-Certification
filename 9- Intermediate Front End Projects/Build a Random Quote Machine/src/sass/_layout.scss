@@ -1,47 +1,64 @@
-body{
+
+
+body {
   background-color: $theme-color;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: $main-font;
+  transition: .5s;
 }
 
-.btn{
+.btn {
   background-color: $theme-color;
+  transition: .5s;
 }
 
-.quote-container{
+.loading{
   position: relative;
-  top: -5%;
+  left: 15px;
+  display: none;
+}
+
+.quote-container {
+  position: absolute;
+  top: 25%;
   text-align: center;
   padding: 10px;
 
   @media screen and (max-width: $mobile-breakpoint) {
-      margin-bottom: 50px;
+    top: 15%;
+    margin-bottom: 50px;
   }
 
-  .quote-wrapper{
+  .quote-wrapper {
     background-color: white;
     padding: 30px 50px;
+    min-width: 500px;
     max-width: 500px;
     border-radius: 3px;
     color: $theme-color;
 
     @media screen and (max-width: $mobile-breakpoint) {
-        padding: 25px 30px;
+      padding: 25px 30px;
+      min-width: initial;
     }
 
-    .quote-text{
+    .quote-text {
       position: relative;
       font-size: 25px;
 
       @media screen and (max-width: $mobile-breakpoint) {
-          font-size: 20px;
+        font-size: 20px;
       }
 
-      .quote-symbol{
+      .quote-symbol {
         margin-right: 5px;
+      }
+
+      #quote > p {
+        display: inline;
+        transition: .5s;
       }
     }
 
@@ -49,48 +66,49 @@ body{
       margin: 10px 0 25px;
       text-align: right;
       font-size: 14px;
+      transition: .5s;
     }
   }
 
-  .quote-actions{
+  .quote-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .btn-icons{
+    .btn-icons {
       background-color: $theme-color;
       color: white;
+      transition: .5s;
     }
 
-    #new-quote{
-       color: white;
-       font-size: 14px;
-     }
+    #new-quote {
+      color: white;
+      font-size: 14px;
+    }
   }
 }
 
-
-.credits{
+.credits {
   margin-top: 8px;
   color: white;
   font-size: 12px;
 }
 
-#source-link{
+#source-link {
   position: absolute;
   top: 10px;
   right: 10px;
   color: white;
   font-size: 40px;
 
-  @media screen and (max-width: $mobile-breakpoint){
-      position: absolute;
-      top: 90%;
-      left: 50%;
-      color: white;
-      width: 30px;
-      font-size: 30px;
-      height: 30px;
-      transform: translateX(-50%);
+  @media screen and (max-width: $mobile-breakpoint) {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    color: white;
+    width: 30px;
+    font-size: 30px;
+    height: 30px;
+    transform: translateX(-50%);
   }
 }

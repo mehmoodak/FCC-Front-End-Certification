@@ -38,7 +38,6 @@ gulp.task('js', function () {
       .pipe(babel({
         presets: ['env']
       }))
-      .pipe(gulpif( environment === 'production', concat('bundle.min.js')))
       .pipe(gulpif( environment === 'production', minifyjs()))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(location+ 'js'))
