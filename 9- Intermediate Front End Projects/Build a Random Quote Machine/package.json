@@ -14,8 +14,10 @@
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^4.0.0",
+    "gulp-if": "^2.0.2",
     "gulp-js-minify": "0.0.3",
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4"
