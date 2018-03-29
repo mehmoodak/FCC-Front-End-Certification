@@ -1,4 +1,4 @@
-# Build Quote Machine
+# Local Weather App 
 
 This project is build using gulp as a workflow tool.
 
