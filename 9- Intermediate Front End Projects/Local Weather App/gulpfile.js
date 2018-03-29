@@ -9,6 +9,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const minifyjs = require('gulp-js-minify');
 const clean = require('gulp-clean');
+const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
 let environment = 'development';

@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Local Weather App</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="./plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="js/jquery.min.js" defer></script>
   <script type="text/javascript" src="js/main.js" defer></script>
 </head>
@@ -17,7 +18,43 @@
       <i class="fas fa-spinner fa-spin fa-2x"></i>
     </div>
     <div class="weather-info">
-
+      <h3 id="location" class="weather-location"></h3>
+      <div class="weather-temperature">
+        <div class="weather-icon">
+          <img id="icon" alt="Icon">
+        </div>
+        <div class="temperature-wrapper">
+          <span id="temperature" class="temperature-scale"></span>
+          <span class="temperature-unit">&#8451;</span>
+        </div>
+      </div>
+      <div id="description" class="weather-description"></div>
+      <hr class="separator">
+      <div class="weather-detail-wrapper">
+        <div class="row">
+          <div class=" weather-detail col-md-6 col-sm-12">
+            Min:
+            <span id="temp-min"> </span>
+            <span class="temperature-unit">&#8451;</span>
+          </div>
+          <div class=" weather-detail col-md-6 col-sm-12">
+            Max:
+            <span id="temp-max"> </span>
+            <span class="temperature-unit">&#8451;</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class=" weather-detail col-md-6 col-sm-12">
+            Pressure: <span id="pressure"></span> atm
+          </div>
+          <div class=" weather-detail col-md-6 col-sm-12">
+            Humidity: <span id="humidity"></span>%
+          </div>
+        </div>
+      </div>
+      <a id="convert-weather" class="convert-weather" data-unit="farenheit">
+        Change to <span class="temperature-unit-alternative">&#x2109;</span>
+      </a>
     </div>
   </div>
   <div class="credits">
