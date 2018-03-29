@@ -1,0 +1,38 @@
+{
+  "name": "local-weather-app",
+  "version": "1.0.0",
+  "description": "This project is being made for getting front end certification from freecodecamp. This is a weather app it will get you location and then show you the weather based on your location.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehmoodak/FCC-Front-End-Certification.git"
+  },
+  "keywords": [
+    "weather-app",
+    "freecodecamp"
+  ],
+  "author": "Mehmood Ahmad Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mehmoodak/FCC-Front-End-Certification/issues"
+  },
+  "homepage": "https://github.com/mehmoodak/FCC-Front-End-Certification#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-js-minify": "0.0.3",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}

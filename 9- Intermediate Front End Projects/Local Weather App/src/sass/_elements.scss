@@ -1,0 +1,23 @@
+/* ------------------- Buttons -------------------- */
+
+.btn {
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn-icons {
+  padding: 8px 10px;
+  background-color: transparent;
+  border: 0;
+  font-size: 18px;
+  border-radius: 3px;
+  color: initial;
+  cursor: pointer;
+}
