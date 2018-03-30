@@ -26,11 +26,6 @@ input:focus {
 .viewer-container {
   margin-top: 150px;
 
-  @media screen and (max-width: $mobile-breakpoint) {
-    //top: 15%;
-    //margin-bottom: 50px;
-  }
-
   .page-title {
     color: #fff;
     margin-bottom: 15px;
@@ -44,6 +39,7 @@ input:focus {
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 
     .btn-icons {
       font-size: 25px;
@@ -56,21 +52,24 @@ input:focus {
       .reset-value {
         position: absolute;
         right: 5px;
-        top: -2px;
+        top: 1px;
         padding: 5px;
         font-size: 18px;
       }
 
       .search-article {
         position: relative;
-        bottom: 4px;
-        min-width: 200px;
+        width: 200px;
         background-color: transparent;
         color: #fff;
         border: 2px solid #fff;
         border-radius: 15px;
         padding: 5px 35px 5px 10px;
-        color: white
+        color: white;
+
+        @media screen and (max-width: $mobile-breakpoint) {
+          width: 150px;
+        }
       }
 
       .search-article::placeholder {
@@ -80,42 +79,55 @@ input:focus {
   }
 
   .articles-wrapper {
-    display: none;
     color: $theme-color;
     text-align: center;
+    margin: 0 auto;
+    width: 90%;
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      width: 97%;
+    }
+
+    .article-error {
+      text-align: center;
+      border-radius: 3px;
+      padding: 15px 30px;
+      background-color: #fff;
+      margin: 0 auto 10px;
+      color: darkred;
+    }
 
     .article-item {
       text-align: left;
       border-radius: 3px;
-      display: inline-block;
-      min-width: 800px;
+      display: block;
       padding: 30px 50px;
       background-color: #fff;
       margin: 0 auto 10px;
       transition: .1s;
+      color: $theme-color;
+      text-decoration: none;
 
-      &:hover{
+      @media screen and (max-width: $mobile-breakpoint) {
+        padding: 15px 20px;
+      }
+
+      &:hover {
         transform: scale(1.01);
         margin-bottom: 15px;
         cursor: pointer;
-        box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.5);
+        box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
       }
 
-      .article-title{
+      .article-title {
         margin: 0;
       }
 
-      .article-text{
+      .article-text {
         margin-bottom: 0;
         margin-top: 10px;
       }
     }
-
-    @media screen and (max-width: $mobile-breakpoint) {
-      padding: 25px 30px;
-      min-width: initial;
-    }
-
   }
 }
 
@@ -134,13 +146,8 @@ input:focus {
   font-size: 40px;
 
   @media screen and (max-width: $mobile-breakpoint) {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    color: white;
-    width: 30px;
     font-size: 30px;
-    height: 30px;
-    transform: translateX(-50%);
+    top: 5px;
+    right: 5px;
   }
 }
