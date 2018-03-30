@@ -1,4 +1,4 @@
-# Local Weather App 
+# Wikipedia Viewer
 
 This project is build using gulp as a workflow tool.
 
