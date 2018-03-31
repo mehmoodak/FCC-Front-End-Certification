@@ -166,7 +166,7 @@ $(document).ready(function (e) {
     $(this).closest('.radio').addClass('active');
 
     //showing channels based on selection
-    showChannels();
+    showChannels($('#search-channel').val());
   });
 
   //submitting form
