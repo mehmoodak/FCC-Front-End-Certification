@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Twitch JSON API</title>
+  <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/html" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/jquery.min.js" defer></script>
+  <script type="text/javascript" src="js/main.js" defer></script>
+</head>
+<body>
+
+<div class="viewer-container">
+  <h2 class="page-title">Twitch Streamers</h2>
+  <div class="search-wrapper">
+    <div class="form-wrapper">
+      <form id="search-form">
+        <div class="search-channel-wrapper">
+          <input class="search-channel" id="search-channel" type="text" name="search-channel" autocomplete="off"
+                 placeholder="Search Channel"/>
+          <button type="button" class="btn-icons reset-value">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="search-filters">
+    <div class="radio active" data-target="all">
+      <input id="all-channels" name="radio" type="radio" checked>
+      <label for="all-channels" class="radio-label">All</label>
+    </div>
+
+    <div class="radio" data-target="online">
+      <input id="online-channels" name="radio" type="radio">
+      <label for="online-channels" class="radio-label">Online</label>
+    </div>
+
+    <div class="radio" data-target="offline">
+      <input id="offline-channels" name="radio" type="radio">
+      <label for="offline-channels" class="radio-label">Offline</label>
+    </div>
+  </div>
+</div>
+<div class="channels-container container">
+  <div id="error-wrapper"></div>
+  <div class="loading">
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+  </div>
+  <div id="twitch-channels" class="row">
+    <div class="channel-item-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12" data-channel="one" data-status="offline">
+      <a class="channel-item">
+        <div class="channel-img">
+          <img src="http://via.placeholder.com/50x50" alt="channel image">
+        </div>
+        <div class="channel-info">
+          <div class="channel-name"> Channel Name</div>
+          <div class="channel-status"> Offline</div>
+          <div class="channel-description"> Channel Description</div>
+        </div>
+      </a>
+    </div>
+    <div class="channel-item-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12" data-channel="two" data-status="online">
+      <a class="channel-item">
+        <div class="channel-img">
+          <img src="http://via.placeholder.com/50x50" alt="channel image">
+        </div>
+        <div class="channel-info">
+          <div class="channel-name"> Channel Name</div>
+          <div class="channel-status online"> Online</div>
+          <div class="channel-description"> Channel Description</div>
+        </div>
+      </a>
+    </div>
+    <div class="channel-item-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12" data-channel="three" data-status="offline">
+      <a class="channel-item">
+        <div class="channel-img">
+          <img src="http://via.placeholder.com/50x50" alt="channel image">
+        </div>
+        <div class="channel-info">
+          <div class="channel-name"> Channel Name</div>
+          <div class="channel-status"> Offline</div>
+          <div class="channel-description"> Channel Description</div>
+        </div>
+      </a>
+    </div>
+    <div class="channel-item-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12" data-channel="four" data-status="online">
+      <a class="channel-item">
+        <div class="channel-img">
+          <img src="http://via.placeholder.com/50x50" alt="channel image">
+        </div>
+        <div class="channel-info">
+          <div class="channel-name"> Channel Name</div>
+          <div class="channel-status online"> Online</div>
+          <div class="channel-description"> Channel Description</div>
+        </div>
+      </a>
+    </div>
+    <div class="channel-item-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12" data-channel="five" data-status="offline">
+      <a class="channel-item">
+        <div class="channel-img">
+          <img src="http://via.placeholder.com/50x50" alt="channel image">
+        </div>
+        <div class="channel-info">
+          <div class="channel-name"> Channel Name</div>
+          <div class="channel-status"> Offline</div>
+          <div class="channel-description"> Channel Description</div>
+        </div>
+      </a>
+    </div>
+    <div class="channel-item-wrapper col-lg-4 col-md-6 col-sm-6 col-xs-12" data-channel="six" data-status="online">
+      <a class="channel-item">
+        <div class="channel-img">
+          <img src="http://via.placeholder.com/50x50" alt="channel image">
+        </div>
+        <div class="channel-info">
+          <div class="channel-name"> Channel Name</div>
+          <div class="channel-status online"> Online</div>
+          <div class="channel-description"> Channel Description</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+<div class="credits">
+  <div class="made-by">
+    by <span id="developer-name"> Mehmood Ahmad Khan </span>
+  </div>
+</div>
+
+<a id="source-link" target="_blank" class="btn-icons"
+   href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/9-%20Intermediate%20Front%20End%20Projects/Wikipedia%20Viewer">
+  <i class="fab fa-github"></i></a>
+
+</body>
+</html>
