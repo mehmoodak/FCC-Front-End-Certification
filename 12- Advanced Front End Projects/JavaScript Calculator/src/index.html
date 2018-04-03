@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Calculator</title>
+  <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/jquery.min.js" defer></script>
+  <script type="text/javascript" src="js/decimal.min.js" defer></script>
+  <script type="text/javascript" src="js/main.js" defer></script>
+</head>
+<body>
+
+<div class="calculator-container">
+  <h2 class="page-title">Simple Calculator</h2>
+
+  <div class="calculator-wrapper">
+    <div class="calculator">
+      <div class="calculator-display">
+        <div id="output">0</div>
+        <div id="equation">0</div>
+      </div>
+      <div class="calculator-actions">
+        <button class="btn clear" data-value="clear">C</button>
+        <button class="btn backspace" data-value="backspace"><i class="fas fa-long-arrow-alt-left"></i></button>
+        <button class="btn numeric" data-value="7">7</button>
+        <button class="btn numeric" data-value="8">8</button>
+        <button class="btn numeric" data-value="9">9</button>
+        <button class="btn arithematic" data-value="/">&divide;</button>
+        <button class="btn numeric" data-value="4">4</button>
+        <button class="btn numeric" data-value="5">5</button>
+        <button class="btn numeric" data-value="6">6</button>
+        <button class="btn arithematic" data-value="*">&times;</button>
+        <button class="btn numeric" data-value="1">1</button>
+        <button class="btn numeric" data-value="2">2</button>
+        <button class="btn numeric" data-value="3">3</button>
+        <button class="btn arithematic" data-value="-">-</button>
+        <button class="btn numeric" data-value="0">0</button>
+        <button class="btn numeric" data-value=".">.</button>
+        <button class="btn equal" data-value="=">=</button>
+        <button class="btn arithematic" data-value="+">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="credits">
+    <div class="made-by">
+      by <span id="developer-name"> Mehmood Ahmad Khan </span>
+    </div>
+  </div>
+</div>
+
+<a id="source-link" target="_blank" class="btn-icons"
+   href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/12-%20Advanced%20Front%20End%20Projects/JavaScript%20Calculator">
+  <i class="fab fa-github"></i></a>
+
+</body>
+</html>

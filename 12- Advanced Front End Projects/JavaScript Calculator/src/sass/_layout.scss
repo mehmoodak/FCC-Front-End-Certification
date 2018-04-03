@@ -1,0 +1,136 @@
+
+body {
+  background-color: $theme-color;
+  font-family: $main-font;
+  transition: .5s;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.btn {
+  background-color: $theme-color;
+  transition: .5s;
+}
+
+.btn-icons {
+  color: #fff;
+  transition: .5s;
+}
+
+.btn-icons:focus {
+  outline: 0;
+}
+
+.calculator-container {
+  margin-top: 50px;
+
+  .page-title {
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .calculator-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .calculator {
+      margin-top: 30px;
+      width: 350px;
+      background: #fff;
+      flex-shrink: 0;
+
+      .calculator-display {
+        padding: 20px 15px;
+        text-align: right;
+        color: #222;
+        background: rgba(221, 221, 221, 0.7);
+        font-size: 30px;
+
+        #equation {
+          margin-top: 5px;
+          font-size: 20px;
+          color: #777;
+        }
+      }
+
+      .calculator-actions {
+        display: flex;
+        flex-wrap: wrap;
+
+        .btn {
+          width: 25%;
+          font-size: 18px;
+          background-color: rgba(238, 238, 238, 0.7);
+          border-radius: 0;
+          color: #222;
+          padding: 20px;
+          border: 1px solid #dfdfdf;
+          transition: .3s;
+
+          &:hover {
+            background-color: rgba(238, 238, 238, 1);
+            color: #000;
+          }
+        }
+
+        .btn.clear {
+          flex-basis: 50%;
+          color: #cc0000;
+        }
+
+        .btn.backspace {
+          flex-basis: 50%;
+          color: #176bb5;
+        }
+
+        .btn.arithematic {
+          color: #176bb5;
+          font-size: 22px;
+        }
+
+        .btn.equal {
+          background-color: #4a9ee8;
+          color: #fff;
+          transition: .3s;
+
+          &:hover {
+            background-color: #1d86e2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.credits {
+  margin-top: 8px;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  padding: 8px 0px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  width: 100%;
+  background: $theme-color;
+}
+
+#source-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 40px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    font-size: 30px;
+    top: 5px;
+    right: 5px;
+  }
+}
