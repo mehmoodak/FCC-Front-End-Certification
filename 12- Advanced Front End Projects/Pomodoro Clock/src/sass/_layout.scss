@@ -33,6 +33,86 @@ input:focus {
     font-weight: bold;
   }
 
+  .clock-wrapper {
+    margin: 30px auto 0;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    padding: 40px 20px;
+
+    #clock {
+      #clock-timer {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        position: relative;
+
+        .clock-inner{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+
+          #timer-value{
+            font-size: 50px;
+            font-weight: bold;
+          }
+
+          .timer-controls {
+            display: flex;
+            justify-content: space-around;
+
+            .control-item {
+              margin: 0 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .clock-settings {
+      margin-top: 20px;
+
+      .settings-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        > hr {
+          width: 100%;
+        }
+
+        > span {
+          padding: 10px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+
+      .settings-items {
+        display: flex;
+        justify-content: space-around;
+
+        .item-title {
+          margin-bottom: 10px;
+        }
+
+        .item-inputs {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .input-value {
+            margin: 0 10px;
+            font-size: 20px;
+          }
+        }
+
+      }
+    }
+  }
+
 }
 
 .credits {
