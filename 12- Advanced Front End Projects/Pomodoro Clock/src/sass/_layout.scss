@@ -15,7 +15,7 @@ input:focus {
 }
 
 .btn-icons {
-  color: #fff;
+  color: $theme-color;
   transition: .5s;
 }
 
@@ -48,13 +48,13 @@ input:focus {
         margin: 0 auto;
         position: relative;
 
-        .clock-inner{
+        .clock-inner {
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
 
-          #timer-value{
+          #timer-value {
             font-size: 50px;
             font-weight: bold;
           }
@@ -62,9 +62,18 @@ input:focus {
           .timer-controls {
             display: flex;
             justify-content: space-around;
+            margin-top: 5px;
 
             .control-item {
-              margin: 0 5px;
+              margin: 0 10px;
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+
+              > i {
+                font-size: 12px;
+                margin-right: 6px;
+              }
             }
           }
         }
@@ -72,7 +81,7 @@ input:focus {
     }
 
     .clock-settings {
-      margin-top: 20px;
+      margin-top: 30px;
 
       .settings-title {
         display: flex;
@@ -81,12 +90,17 @@ input:focus {
 
         > hr {
           width: 100%;
+          border: 1px solid #229E74;
+          background-color: #229E74;
         }
 
         > span {
-          padding: 10px;
-          font-size: 18px;
-          font-weight: bold;
+          padding: 3px 10px;
+          font-size: 16px;
+          background-color: $theme-color;
+          margin: 0 5px;
+          border-radius: 30px;
+          color: white;
         }
       }
 
@@ -95,7 +109,8 @@ input:focus {
         justify-content: space-around;
 
         .item-title {
-          margin-bottom: 10px;
+          margin-bottom: 5px;
+          font-size: 14px;
         }
 
         .item-inputs {
@@ -104,8 +119,11 @@ input:focus {
           align-items: center;
 
           .input-value {
-            margin: 0 10px;
             font-size: 20px;
+          }
+
+          .input-increase, .input-decrease{
+            cursor: pointer;
           }
         }
 

@@ -3,7 +3,7 @@
 var bar = new ProgressBar.Circle('#clock-timer', {
   strokeWidth: 4,
   duration: 10,
-  color: '#00b1cc',
+  color: '#229E74',
   trailColor: '#fff',
   trailWidth: 4,
 });
