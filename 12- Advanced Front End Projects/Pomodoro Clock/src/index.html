@@ -18,15 +18,15 @@
     <div id="clock" class="clock">
       <div id="clock-timer">
         <div class="clock-inner">
-          <div id="timer-value">
+          <div id="timer-value" data-status="stopped">
             <span id="minutes">24</span>:<span id="seconds">00</span>
           </div>
           <div class="timer-controls">
-            <div id="play" class="control-item" data-is-play="false">
+            <div id="play" class="control-item">
               <i class="fas fa-play"></i>
               <span>Start</span>
             </div>
-            <div id="reset" class="control-item">
+            <div id="reset" class="control-item" style="display: none;">
               <i class="fas fa-redo"></i>
               <span>Reset</span>
             </div>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="settings-items">
-        <div class="setting-item break-item">
+        <div class="setting-item session-item">
           <div class="item-title">Session</div>
           <div class="item-inputs">
             <div class="input-decrease">
@@ -55,7 +55,7 @@
             </div>
           </div>
         </div>
-        <div class="setting-item session-item">
+        <div class="setting-item break-item">
           <div class="item-title">Break</div>
           <div class="item-inputs">
             <div class="input-decrease">
