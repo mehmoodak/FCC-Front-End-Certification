@@ -113,7 +113,7 @@ $(document).ready(function (e) {
       reset_clock();
       get_times();
     }else{
-      console.log('Minimum Break Limit Reached');
+      console.log('Minimum Limit Reached');
     }
   });
 
