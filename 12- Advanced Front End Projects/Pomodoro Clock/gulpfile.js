@@ -48,7 +48,12 @@ gulp.task('js', function () {
 gulp.task('plugins', function () {
   gulp.src(["./src/plugins/**/*.*"], {base: "./src/plugins"})
       .pipe(gulp.dest(location+ "plugins"));
-})
+});
+
+gulp.task('assets', function () {
+  gulp.src(["./src/assets/**/*.*"], {base: "./src/assets"})
+      .pipe(gulp.dest(location+ "assets"));
+});
 
 gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
@@ -95,4 +100,4 @@ gulp.watch('./src/images/**/*.*', ['images']);
 
 // ========================= Default ===================
 
-gulp.task('default', ['clean', 'html', 'sass', 'js', 'plugins', 'serve', 'images', 'css']);
+gulp.task('default', ['clean', 'html', 'sass', 'js', 'plugins', 'assets', 'serve', 'images', 'css']);

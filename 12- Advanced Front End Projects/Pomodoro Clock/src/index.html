@@ -18,6 +18,7 @@
     <div id="clock" class="clock">
       <div id="clock-timer">
         <div class="clock-inner">
+          <h2 id="timer-active">Session</h2>
           <div id="timer-value" data-status="stopped">
             <span id="minutes">25</span>:<span id="seconds">00</span>
           </div>
@@ -44,7 +45,7 @@
 
       <div class="settings-items">
         <div class="setting-item session-item">
-          <div class="item-title">Session</div>
+          <div class="item-title">Session Length</div>
           <div class="item-inputs">
             <div class="input-decrease">
               <button id="decrease-session" class="btn-icons"><i class="fas fa-minus"></i></button>
@@ -56,7 +57,7 @@
           </div>
         </div>
         <div class="setting-item break-item">
-          <div class="item-title">Break</div>
+          <div class="item-title">Break Length</div>
           <div class="item-inputs">
             <div class="input-decrease">
               <button id="decrease-break" class="btn-icons"><i class="fas fa-minus"></i></button>
@@ -78,6 +79,11 @@
     </div>
   </div>
 </div>
+
+<audio id="tone">
+  <source src="assets/audio/tone.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
 
 <a id="source-link" target="_blank" class="btn-icons"
    href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/12-%20Advanced%20Front%20End%20Projects/Pomodoro%20Clock">
