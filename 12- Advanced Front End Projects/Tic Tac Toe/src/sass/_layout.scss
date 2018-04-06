@@ -86,10 +86,11 @@ input:focus {
             padding: 0 15px;
             color: rgba(100, 60, 50, .8);
             text-align: left;
+            border-right: 1px solid rgba(100, 60, 50, .7);
           }
 
-          > div:first-child {
-            border-right: 1px solid rgba(100, 60, 50, .7);
+          > div:last-child {
+            border-right: none;
           }
         }
 
