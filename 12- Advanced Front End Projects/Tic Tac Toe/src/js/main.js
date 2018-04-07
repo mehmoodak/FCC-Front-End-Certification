@@ -8,14 +8,6 @@ class Player {
     this.symbol = symbol;
   }
 
-  getBestMove(availableSpaces) {
-    // Get random index from available spaces
-    if (this.isComputer) {
-      let index = Math.floor(Math.random() * availableSpaces.length);
-      return availableSpaces[index];
-    }
-  }
-
   // Getting Logs
   // player => 1p/2p
   logs(player) {
@@ -62,12 +54,16 @@ class Board {
   // Setting the player turn
   set_turn() {
     if (this.turn === null) { // Random When Game is Started
-      let turn = Math.floor(Math.random() * 2);
+      if(this.player2.isComputer){
+        this.turn = '1p'; // If there is computer turn first then the game flow will remain same means computer play same moves over and over
+      }else {
+        let turn = Math.floor(Math.random() * 2);
 
-      if (turn === 0) {
-        this.turn = '1p';
-      } else if (turn === 1) {
-        this.turn = '2p';
+        if (turn === 0) {
+          this.turn = '1p';
+        } else if (turn === 1) {
+          this.turn = '2p';
+        }
       }
     } else { // Switch the turn based on previous turn
       if (this.turn === '1p') {
@@ -90,30 +86,31 @@ class Board {
   }
 
   // check if anyone wins or not
-  check_game_status() {
-    let symbol = this.get_current_player_sybmol();
+  check_game_status(board, symbol = null) {
+    if (!symbol)
+      symbol = this.get_current_player_sybmol();
 
     if (
-        (this.board[0] === symbol && this.board[1] === symbol && this.board[2] === symbol) || // rows
-        (this.board[3] === symbol && this.board[4] === symbol && this.board[5] === symbol) || // rows
-        (this.board[6] === symbol && this.board[7] === symbol && this.board[8] === symbol) || // rows
-        (this.board[0] === symbol && this.board[3] === symbol && this.board[6] === symbol) || // cols
-        (this.board[1] === symbol && this.board[4] === symbol && this.board[7] === symbol) || // cols
-        (this.board[2] === symbol && this.board[5] === symbol && this.board[8] === symbol) || // cols
-        (this.board[0] === symbol && this.board[4] === symbol && this.board[8] === symbol) || // diagnols
-        (this.board[2] === symbol && this.board[4] === symbol && this.board[6] === symbol) // diagnols
+        (board[0] === symbol && board[1] === symbol && board[2] === symbol) || // rows
+        (board[3] === symbol && board[4] === symbol && board[5] === symbol) || // rows
+        (board[6] === symbol && board[7] === symbol && board[8] === symbol) || // rows
+        (board[0] === symbol && board[3] === symbol && board[6] === symbol) || // cols
+        (board[1] === symbol && board[4] === symbol && board[7] === symbol) || // cols
+        (board[2] === symbol && board[5] === symbol && board[8] === symbol) || // cols
+        (board[0] === symbol && board[4] === symbol && board[8] === symbol) || // diagnols
+        (board[2] === symbol && board[4] === symbol && board[6] === symbol) // diagnols
     ) {
-      return true;
+      return symbol;
     }
 
     return false;
   }
 
   // get empty boxes (also useful for checking tie condition i.e if nothing available and no one wins)
-  get_available_spaces() {
+  get_available_spaces(board) {
     let availableSpaces = []
-    for (let i = 0; i < this.board.length; i++) {
-      if (this.board[i] === '') {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === '') {
         availableSpaces.push(i);
       }
     }
@@ -134,7 +131,89 @@ class Board {
     }
   }
 
-  // logs
+  // get the move via algorithm
+  ai_move() {
+    // debugger;
+    let move = this.minimax(this.board, this.player2.symbol, 0);
+    return move.index;
+  }
+
+  // the main minimax function (algorithm for AI Move)
+  // reference : https://github.com/ahmadabdolsaheb/minimaxarticle/blob/master/index.js
+  // article : https://medium.freecodecamp.org/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37
+  minimax(newBoard, player, depth) {
+
+    //available spots
+    var availSpots = this.get_available_spaces(newBoard);
+
+    // checks for the terminal states such as win, lose, and tie and returning a value accordingly
+    if (this.check_game_status(newBoard, this.player1.symbol)) {
+      return {score: depth - 10};
+    }
+    else if (this.check_game_status(newBoard, this.player2.symbol)) {
+      return {score: 10 - depth};
+    }
+    else if (availSpots.length === 0) {
+      return {score: 0};
+    }
+
+    // an array to collect all the objects
+    var moves = [];
+
+    // loop through available spots
+    for (var i = 0; i < availSpots.length; i++) {
+      //create an object for each and store the index of that spot that was stored as a number in the object's index key
+      var move = {};
+      move.index = availSpots[i];
+
+      // set the empty spot to the current player
+      newBoard[availSpots[i]] = player;
+
+      //if collect the score resulted from calling minimax on the opponent of the current player
+      if (player == this.player2.symbol) {
+        var result = this.minimax(newBoard, this.player1.symbol, depth + 1);
+        move.score = result.score;
+      }
+      else {
+        var result = this.minimax(newBoard, this.player2.symbol, depth + 1);
+        move.score = result.score;
+      }
+
+      //reset the spot to empty (as the array passed by reference)
+      newBoard[availSpots[i]] = "";
+
+      // push the object to the array
+      moves.push(move);
+    }
+
+
+    // if it is the computer's turn loop over the moves and choose the move with the highest score
+    var bestMove;
+    if (player === this.player2.symbol) {
+      var bestScore = -10000;
+      for (var i = 0; i < moves.length; i++) {
+        if (moves[i].score > bestScore) {
+          bestScore = moves[i].score;
+          bestMove = i;
+        }
+      }
+    } else {
+
+      // else loop over the moves and choose the move with the lowest score
+      var bestScore = 10000;
+      for (var i = 0; i < moves.length; i++) {
+        if (moves[i].score < bestScore) {
+          bestScore = moves[i].score;
+          bestMove = i;
+        }
+      }
+    }
+
+    // return the chosen move (object) from the array to the higher depth
+    return moves[bestMove];
+  }
+
+// logs
   logs() {
     console.group('Board');
 
@@ -156,7 +235,7 @@ class Board {
 
 $(document).ready(function (e) {
 
-  let board;
+  let game;
 
   // Setting Layout for Turns
   function setTurn(turn) {
@@ -166,62 +245,62 @@ $(document).ready(function (e) {
 
   // making the computer move and updating the layout
   function computerMove() {
-    if (board.player2.isComputer && board.turn === '2p') {
+    if (game.player2.isComputer && game.turn === '2p') {
       setTimeout(function (e) { // add delay while making moves
 
-        let availableSpaces = board.get_available_spaces();
-        let location = board.player2.getBestMove(availableSpaces);
-        let isValid = board.play_move(location);
+        let location = game.ai_move();
+        let isValid = game.play_move(location);
 
         if (isValid) { // update layout if move is valid
-          $('.single-box[data-location=' + location + ']').children('.symbol-placeholder').html(board.player2.symbol);
+          $('.single-box[data-location=' + location + ']').children('.symbol-placeholder').html(game.player2.symbol);
           checkGameStatus(); // check game status ( win, lose, tie or next turn)
         }
 
-        board.logs();
+        game.logs();
       }, 1000);
     }
   }
 
-  // Check and show if player win
+  // Check and show if player win, loses or draws
   function checkGameStatus() {
-    let isWon = board.check_game_status();
-    let isTie = (board.get_available_spaces().length === 0) ? true : false;
+    // debugger;
+    let isWon = game.check_game_status(game.board);
+    let isTie = (game.get_available_spaces(game.board).length === 0) ? true : false;
 
     // Showing msgs based on the conditions of the win, lose or draw and update total wins of the board
     if (isWon) {
-      if (board.mode === '2p') {
-        if (board.player1.symbol === board.get_current_player_sybmol()) {
-          board.wins['player1']++;
-          showResult(board.player1.name + ' is Won!');
-        } else if (board.player2.symbol === board.get_current_player_sybmol()) {
-          showResult(board.player2.name + ' is Won!');
-          board.wins['player2']++;
+      if (game.mode === '2p') {
+        if (game.player1.symbol === isWon) {
+          game.wins['player1']++;
+          showResult(game.player1.name + ' is Won!');
+        } else if (game.player2.symbol === isWon) {
+          showResult(game.player2.name + ' is Won!');
+          game.wins['player2']++;
         }
-      } else if (board.mode === '1p') {
-        if (board.player1.symbol === board.get_current_player_sybmol()) {
-          board.wins['player1']++;
+      } else if (game.mode === '1p') {
+        if (game.player1.symbol === isWon) {
+          game.wins['player1']++;
           showResult('Congrats! You Won :D');
         }
-        if (board.player2.symbol === board.get_current_player_sybmol()) {
+        if (game.player2.symbol === isWon) {
           showResult('Oh oh You Lost :(');
-          board.wins['player2']++;
+          game.wins['player2']++;
         }
       }
     } else if (isTie) {
       showResult('Game is Drawn');
-      board.wins['draws']++;
+      game.wins['draws']++;
     }
 
     // Update the UI of scores if there is any win or draw
     if (isWon || isTie) {
-      $('#player1-score > .score').html(board.wins['player1']);
-      $('#draw-score > .score').html(board.wins['draws']);
-      $('#player2-score > .score').html(board.wins['player2']);
+      $('#player1-score > .score').html(game.wins['player1']);
+      $('#draw-score > .score').html(game.wins['draws']);
+      $('#player2-score > .score').html(game.wins['player2']);
 
       console.log("==================== Game Ends ====================");
-    }else{ // if no win or draw then shift the turn
-      setTurn(board.set_turn());
+    } else { // if no win or draw then shift the turn
+      setTurn(game.set_turn());
     }
   }
 
@@ -229,8 +308,8 @@ $(document).ready(function (e) {
   function showResult(msg) {
     // resetting the board (for next game i.e after result)
     function resetBoard() {
-      board.board = new Array(9).fill('');
-      board.turn = null;
+      game.board = new Array(9).fill('');
+      game.turn = null;
 
       $('.symbol-placeholder').html('');
       $('.turn.active').removeClass('active');
@@ -246,11 +325,11 @@ $(document).ready(function (e) {
       $('#result').html('');
 
       // Restarting the game
-      setTurn(board.set_turn());
+      setTurn(game.set_turn());
       // Play the move if the second player is computer and it was computers turn
       computerMove();
 
-      board.logs();
+      game.logs();
     }, 2500);
   }
 
@@ -261,11 +340,11 @@ $(document).ready(function (e) {
     $('.game-symbol').show();
 
     // Update controls and turn UI based on mode selection
-    if($(this).attr('data-mode') === '1p'){
+    if ($(this).attr('data-mode') === '1p') {
       $('.game-symbol .mode-question').html('Would you like to be X or O?');
       $('#turn-2p').html('Computer Turns');
       $('#player2-score > .player').html('computer');
-    }else if($(this).attr('data-mode') === '2p'){
+    } else if ($(this).attr('data-mode') === '2p') {
       $('.game-symbol .mode-question').html('Player1 : Would you like to be X or O?');
       $('#turn-2p').html('Player2 Turns');
       $('#player2-score > .player').html('player2');
@@ -281,17 +360,17 @@ $(document).ready(function (e) {
     let mode = $('.mode-btn.active').removeClass('active').attr('data-mode');
 
     // Initialize the board with the game mode and setting symbols
-    board = new Board(mode, symbol);
+    game= new Board(mode, symbol);
 
     // Show board and start the game
     $('.game-symbol').hide();
     $('.game-board').show();
-    setTurn(board.set_turn());
+    setTurn(game.set_turn());
 
     // Play the move if the second player is computer and it was computers turn
     computerMove();
 
-    board.logs();
+    game.logs();
   });
 
   // Playing the Moves (Both Player and Computer if Exists)
@@ -299,17 +378,17 @@ $(document).ready(function (e) {
     let location = $(this).attr('data-location');
 
     // If the second player is not computer then update the UI
-    if (!(board.turn === '2p' && board.player2.isComputer)) { // preventing user interference when its computer turns
-      let isValid = board.play_move(location);
+    if (!(game.turn === '2p' && game.player2.isComputer)) { // preventing user interference when its computer turns
+      let isValid = game.play_move(location);
 
       if (isValid) {
-        $(this).children('.symbol-placeholder').html(board.get_current_player_sybmol());
+        $(this).children('.symbol-placeholder').html(game.get_current_player_sybmol());
         checkGameStatus();
 
         // Play the move if the second player is computer and it was computers turn
         computerMove();
       }
-      board.logs();
+      game.logs();
     } else {
       console.log(' =================== Its Computer Turns =================');
     }
@@ -319,7 +398,7 @@ $(document).ready(function (e) {
   // Resetting the Game
   $('#reset').on('click', function (e) {
     console.clear();
-    board = null; // reset the board
+    game= null; // reset the board
 
     // reset turn ui, scores and board
     $('.turn.active').removeClass('active');

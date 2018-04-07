@@ -32,5 +32,6 @@
     "gulp-js-minify": "0.0.3",
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4"
-  }
+  },
+  "dependencies": {}
 }
