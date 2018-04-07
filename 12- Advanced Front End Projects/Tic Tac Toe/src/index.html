@@ -16,8 +16,8 @@
 
   <div class="game-wrapper">
     <div class="turns-wrapper">
-      <div id="turn-1" class="turn active"> Player1 Turns</div>
-      <div id="turn-2" class="turn"> Player2 Turns</div>
+      <div id="turn-1p" class="turn"> Player1 Turns</div>
+      <div id="turn-2p" class="turn"> Player2 Turns</div>
     </div>
     <div class="board-wrapper">
       <div class="game-controls">
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="game-reset">
-          <button class="btn">
+          <button id="reset" class="btn">
             Reset All
           </button>
         </div>
@@ -47,53 +47,56 @@
             <p> How do you <br> want to play?</p>
           </div>
           <div class="mode-options">
-            <button id="single-player" class="btn"> One Player </button>
-            <button id="double-player" class="btn"> Two Player </button>
+            <button class="btn mode-btn" data-mode="1p"> One Player </button>
+            <button class="btn mode-btn" data-mode="2p"> Two Player </button>
           </div>
         </div>
         <div class="game-symbol">
           <div class="mode-question">
-            <p> Would you like to be X or 0?</p>
+            <p> Would you like to be X or O?</p>
           </div>
           <div class="mode-options">
-            <button id="x-player" class="btn"> X </button>
-            <button id="o-player" class="btn"> 0 </button>
+            <button class="btn symbol-choice" data-symbol="X"> X </button>
+            <button class="btn symbol-choice" data-symbol="O"> O </button>
           </div>
         </div>
         <div class="game-board">
           <div class="game-board-row">
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="0"></div>
+            <div class="single-box" data-location="0">
+              <div class="symbol-placeholder"></div>
             </div>
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="1"></div>
+            <div class="single-box" data-location="1">
+              <div class="symbol-placeholder"></div>
             </div>
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="2"></div>
-            </div>
-          </div>
-          <div class="game-board-row">
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="3"></div>
-            </div>
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="4"></div>
-            </div>
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="5"></div>
+            <div class="single-box" data-location="2">
+              <div class="symbol-placeholder"></div>
             </div>
           </div>
           <div class="game-board-row">
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="6"></div>
+            <div class="single-box" data-location="3">
+              <div class="symbol-placeholder"></div>
             </div>
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="7"></div>
+            <div class="single-box" data-location="4">
+              <div class="symbol-placeholder"></div>
             </div>
-            <div class="single-box">
-              <div class="symbol-placeholder" data-location="8"></div>
+            <div class="single-box" data-location="5">
+              <div class="symbol-placeholder"></div>
             </div>
           </div>
+          <div class="game-board-row">
+            <div class="single-box" data-location="6">
+              <div class="symbol-placeholder"></div>
+            </div>
+            <div class="single-box" data-location="7">
+              <div class="symbol-placeholder"></div>
+            </div>
+            <div class="single-box" data-location="8">
+              <div class="symbol-placeholder"></div>
+            </div>
+          </div>
+        </div>
+        <div class="game-result">
+            <p id="result">Result of the Game! </p>
         </div>
       </div>
     </div>

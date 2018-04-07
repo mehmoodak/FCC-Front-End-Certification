@@ -38,7 +38,7 @@ input:focus {
   .game-wrapper {
     background-color: transparent;
     border-radius: 3px;
-    margin-top: 80px;
+    margin-top: 70px;
     position: relative;
 
     .turns-wrapper {
@@ -51,6 +51,7 @@ input:focus {
         border-radius: 5px 5px 0 0;
         transition: .5s;
         z-index: -1;
+        top: 0;
       }
 
       .turn.active {
@@ -75,6 +76,7 @@ input:focus {
       box-shadow: 0px 8px 11px 5px #666;
 
       .game-controls {
+        display: none;
 
         .game-scores {
           position: absolute;
@@ -122,6 +124,7 @@ input:focus {
         padding: 15px;
         border-radius: 5px;
         height: 310px;
+        position: relative;
 
         .game-mode {
 
@@ -229,6 +232,28 @@ input:focus {
 
           .game-board-row:last-child > .single-box:first-child {
             border-bottom: 1px solid transparent;
+          }
+        }
+
+        .game-result{
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 15px;
+          background-color: rgba(0,0,0,0.3);
+          border-radius: 5px;
+
+          > p{
+            font-family: $main-font;
+            font-size: 1.6rem;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
           }
         }
       }
