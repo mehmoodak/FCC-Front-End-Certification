@@ -1,0 +1,35 @@
+{
+  "name": "simon-game",
+  "version": "1.0.0",
+  "description": "This project is a simon game and it is made as a part of getting certification from freeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/mehmoodak/FCC-Free-Code-Camp"
+  },
+  "keywords": [
+    "simon-game",
+    "free-code-camp",
+    "front-end-certification"
+  ],
+  "author": "Mehmood Ahmad Khan",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-js-minify": "0.0.3",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}
