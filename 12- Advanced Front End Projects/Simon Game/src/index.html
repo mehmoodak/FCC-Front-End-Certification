@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Simon Game</title>
   <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/fontawesome-all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="js/jquery.min.js" defer></script>
   <script type="text/javascript" src="js/main.js" defer></script>
@@ -17,30 +18,40 @@
 
     <div class="simon-board">
       <div class="simon-buttons">
-        <div class="simon-button"></div>
-        <div class="simon-button"></div>
-        <div class="simon-button"></div>
-        <div class="simon-button"></div>
+        <div class="button-row">
+          <div class="simon-button green"></div>
+          <div class="simon-button red"></div>
+        </div>
+        <div class="button-row">
+          <div class="simon-button yellow"></div>
+          <div class="simon-button blue"></div>
+        </div>
       </div>
       <div class="simon-controller">
-        <h1 class="game-name">Simon <span>&reg;</span> </h1>
+        <h1 class="game-name">Simon <span>&reg;</span></h1>
         <div class="simon-controls">
           <div class="simon-display">
-            <span id="count">--</span>
-            COUNT
+            <span id="count">- -</span>
+            <p>COUNT</p>
           </div>
           <div class="start-game">
             <button class="btn"></button>
-            START
+            <p>START</p>
           </div>
           <div class="strict-mode">
             <div class="strict-indicator"></div>
             <button class="btn"></button>
-            STRICT
+            <p>STRICT</p>
           </div>
         </div>
         <div class="simon-switch">
-          
+          <div class="switch-wrapper">
+            <span> OFF </span>
+            <div class="switch">
+              <div class="indicator"></div>
+            </div>
+            <span> ON </span>
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +66,7 @@
 </div>
 
 <a id="source-link" target="_blank" class="btn-icons"
-   href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/12-%20Advanced%20Front%20End%20Projects/Tic%20Tac%20Toe">
+   href="https://github.com/mehmoodak/FCC-Front-End-Certification/tree/master/12-%20Advanced%20Front%20End%20Projects/Simon%20Game">
   <i class="fab fa-github"></i></a>
 
 </body>
