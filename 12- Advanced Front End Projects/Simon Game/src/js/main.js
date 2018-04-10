@@ -12,6 +12,7 @@ $(document).ready(function (e) {
   let pauseTime = 0; // time in ms to pause between displaying steps
   let isWaiting = null // if game is waiting for user feedback after showing the steps (keep user away to interfere in between)
   let userInput = [] // for storing user inputs
+  let isStrictMode = false;
 
   function displayAnimation(value = '- -') {
     $('#count').html(value);
@@ -109,6 +110,9 @@ $(document).ready(function (e) {
 
   function turnOff() {
     resetGame();
+
+    isStrictMode = false;
+    $('.strict-indicator').removeClass('on');
   }
 
   function resetGame() {
@@ -116,6 +120,7 @@ $(document).ready(function (e) {
     currentStep = null;
     steps = null;
     stepPart = null;
+    isWaiting = false;
 
     if (stepInterval) {
       clearInterval(stepInterval);
@@ -180,6 +185,18 @@ $(document).ready(function (e) {
 
   $('.simon-button').on('mousedown', function (e) {
 
+    if (gameStatus === 'on' && isWaiting) {
+      $(this).addClass('light');
+
+    } else {
+      if (gameStatus === 'on')
+        console.log('------ Waiting for user turn ------------');
+    }
+
+  });
+
+  $('.simon-button').on('mouseup', function (e) {
+
     function isCorrectInput(input) {
       userInput.push(input);
       for (var i = 0; i < userInput.length; i++) {
@@ -191,32 +208,42 @@ $(document).ready(function (e) {
     }
 
     if (gameStatus === 'on' && isWaiting) {
-      $(this).addClass('light');
+      $(this).removeClass('light');
 
       let value = $(this).attr('data-button-number');
       let isValid = isCorrectInput(value);
 
       if (isValid) {
         logs(); // for showing logs after each input
-
         if (userInput.length === currentStep.length) {
           isWaiting = false;
           gameStepping(false);
         }
       } else {
-        gameStepping(true);
+        isWaiting = false;
+
+        if(!isStrictMode) {
+          gameStepping(true);
+        }else{
+          displayAnimation('! !');
+
+          setTimeout(function (e) {
+            resetGame();
+
+            initializingGame();
+            gameStepping();
+          }, 1500);
+        }
       }
-
-    } else {
-      if (gameStatus === 'on')
-        console.log('------ Waiting for user turn ------------');
     }
-
   });
 
-  $('.simon-button').on('mouseup', function (e) {
-    if (gameStatus === 'on' && isWaiting) {
-      $(this).removeClass('light');
+  $('#strict-mode').on('click', function (e) {
+    if(gameStatus === 'on') {
+      $(this).children('.strict-indicator').toggleClass('on');
+      isStrictMode = (isStrictMode === false) ? true : false;
+    }else{
+      console.log('Game is Turned OFF.');
     }
   });
 });
