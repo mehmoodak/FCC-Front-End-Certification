@@ -35,6 +35,8 @@ input:focus {
   }
 
   .game-wrapper {
+    position: relative;
+
     .simon-board {
       position: relative;
       width: 400px;
@@ -43,6 +45,26 @@ input:focus {
       margin: 30px auto 0;
       background: #323232;
       padding: 25px;
+
+      .msg-wrapper{
+        display: none;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        text-align: center;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .msg-wrapper.show{
+        display: flex;
+      }
 
       .simon-buttons {
         width: 100%;

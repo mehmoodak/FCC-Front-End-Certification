@@ -2,8 +2,8 @@
 
 $(document).ready(function (e) {
 
-  let gameStatus = 'off'; // on or off
-  let count = 0; // count of successful turns
+  let gameStatus = 'off'; // tunr the game on or off
+  let count = 0; // count of steps to repeat
   let steps = null; // to track all of the steps
   let currentStep = null; // array of current steps to display or evaluate
   let stepPart = null; // get just one part of the current step to show the steps
@@ -12,8 +12,8 @@ $(document).ready(function (e) {
   let pauseTime = 0; // time in ms to pause between displaying steps
   let isWaiting = true // if game is waiting for user feedback after showing the steps (keep user away to interfere in between)
   let userInput = [] // for storing user inputs
-  let isStrictMode = false;
-  let isComplete = false;
+  let isStrictMode = false; // for strict mode
+  let isComplete = false; // for completion
 
   function displayAnimation(value = '- -') {
     $('#count').html(value);
@@ -55,7 +55,7 @@ $(document).ready(function (e) {
   function gameStepping(isAgain = false) {
     function setNewSteps() {
       currentStep = [];
-      if (count < 3) {
+      if (count < 20) {
         for (var i = 0; i < count + 1; i++) {
           currentStep.push(steps[i]);
         }
@@ -63,6 +63,15 @@ $(document).ready(function (e) {
       } else {
         isComplete = true;
         displayAnimation('* *');
+        setTimeout(function () {
+          $('.msg-wrapper').addClass('show');
+          setTimeout(function (e) {
+            $('.msg-wrapper').removeClass('show');
+            resetGame();
+            initializingGame();
+            gameStepping();
+          },2500)
+        },1500)
         console.log('=========== Only 20 Steps are allowed in the game ================ ')
       }
 
@@ -206,6 +215,8 @@ $(document).ready(function (e) {
         initializingGame(false);
       }
       gameStepping();
+    } else {
+      console.log('Game is Turned OFF.');
     }
   });
 
