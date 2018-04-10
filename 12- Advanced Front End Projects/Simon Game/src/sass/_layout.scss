@@ -55,7 +55,7 @@ input:focus {
           justify-content: space-between;
 
           .simon-button {
-            width: 48%;
+            width: 47.5%;
             height: 100%;
             display: inline-block;
             cursor: pointer;
@@ -64,7 +64,7 @@ input:focus {
               background: #00A64B;
             }
 
-            &.green.active {
+            &.green.light {
               background: #13ff7c;
             }
 
@@ -72,7 +72,7 @@ input:focus {
               background: #9f0f17;
             }
 
-            &.red.active {
+            &.red.light {
               background: #FE4C4B;
             }
 
@@ -80,7 +80,7 @@ input:focus {
               background: #cca707;
             }
 
-            &.yellow.active {
+            &.yellow.light {
               background: #FDD844;
             }
 
@@ -88,7 +88,7 @@ input:focus {
               background: #094a8f;
             }
 
-            &.blue.active {
+            &.blue.light {
               background: #228CFD;
             }
           }
@@ -201,7 +201,12 @@ input:focus {
 
           .start-game {
             .btn {
+              position: relative;
               background-color: #FC0102;
+            }
+            .btn:active {
+              top: 2px;
+              box-shadow: 0 1px 1px #292929;
             }
           }
 
@@ -223,7 +228,13 @@ input:focus {
             }
 
             .btn {
+              position: relative;
               background-color: yellow;
+            }
+
+            .btn:active {
+              top: 2px;
+              box-shadow: 0 1px 1px #292929;
             }
           }
         }
@@ -244,6 +255,7 @@ input:focus {
               width: 32px;
               height: 15px;
               position: relative;
+              cursor: pointer;
 
               .indicator{
                 position: absolute;
@@ -251,6 +263,7 @@ input:focus {
                 width: 15px;
                 height: 15px;
                 left: 1px;
+                transition: .5s;
               }
             }
 

@@ -12,19 +12,19 @@
 <body>
 
 <div class="game-container">
-  <h2 class="page-title">Simon Game</h2>
+  <h1 class="page-title">Simon Game</h1>
 
   <div class="game-wrapper">
 
     <div class="simon-board">
       <div class="simon-buttons">
         <div class="button-row">
-          <div class="simon-button green"></div>
-          <div class="simon-button red"></div>
+          <div class="simon-button green" data-button-number="1"></div>
+          <div class="simon-button red" data-button-number="2"></div>
         </div>
         <div class="button-row">
-          <div class="simon-button yellow"></div>
-          <div class="simon-button blue"></div>
+          <div class="simon-button yellow" data-button-number="3"></div>
+          <div class="simon-button blue" data-button-number="4"></div>
         </div>
       </div>
       <div class="simon-controller">
@@ -34,7 +34,7 @@
             <span id="count">- -</span>
             <p>COUNT</p>
           </div>
-          <div class="start-game">
+          <div id="start-game" class="start-game">
             <button class="btn"></button>
             <p>START</p>
           </div>
@@ -47,7 +47,7 @@
         <div class="simon-switch">
           <div class="switch-wrapper">
             <span> OFF </span>
-            <div class="switch">
+            <div id="switch" class="switch" data-game-status="off">
               <div class="indicator"></div>
             </div>
             <span> ON </span>
