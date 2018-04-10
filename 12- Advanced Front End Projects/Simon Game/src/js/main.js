@@ -13,6 +13,7 @@ $(document).ready(function (e) {
   let isWaiting = null // if game is waiting for user feedback after showing the steps (keep user away to interfere in between)
   let userInput = [] // for storing user inputs
   let isStrictMode = false;
+  let isComplete = false;
 
   function displayAnimation(value = '- -') {
     $('#count').html(value);
@@ -20,9 +21,16 @@ $(document).ready(function (e) {
     let hideAndSeek = 0;
     displayInterval = setInterval(function (e) {
       $('.simon-display').toggleClass('on');
+
+      if(isComplete){
+        $('.simon-button[data-button-number="'+ stepPart +'"]').addClass('light');
+      }
       hideAndSeek++;
       if (hideAndSeek >= 4) {
         $('.simon-display').addClass('on');
+        if(isComplete) {
+          $('.simon-button.light').removeClass('light');
+        }
         clearInterval(displayInterval);
       }
     }, 400);
@@ -35,6 +43,8 @@ $(document).ready(function (e) {
       steps.push(step);
     }
 
+    steps = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4];
+
     displayAnimation();
     // logs();
   }
@@ -42,12 +52,14 @@ $(document).ready(function (e) {
   function gameStepping(isAgain = false) {
     function setNewSteps() {
       currentStep = [];
-      if (count < 20) {
+      if (count < 3) {
         for (var i = 0; i < count + 1; i++) {
           currentStep.push(steps[i]);
         }
         count++;
       } else {
+        isComplete = true;
+        displayAnimation('* *');
         console.log('=========== Only 20 Steps are allowed in the game ================ ')
       }
 
@@ -56,14 +68,17 @@ $(document).ready(function (e) {
     }
 
     function showSteps() {
-      let delayToCut = count * 20; // For Increasing Speed
-      let intervalTime = 1200 - delayToCut;
+      let intervalDelayToCut = count * 35; // For Increasing Speed
+      let pauseDelayToCut = count * 12; // For Increasing Speed
+
+      let intervalTime;
 
       if (count === 1) { // additional delay for first step so that animation on counter will be displayed easily
         pauseTime = 1000;
-        intervalTime = 1800 - delayToCut;
+        intervalTime = 1800 - intervalDelayToCut;
       } else {
-        pauseTime = 400;
+        pauseTime = 400 - pauseDelayToCut;
+        intervalTime = 1200 - intervalDelayToCut;
       }
 
       let copyCurrentStep = currentStep.slice();
@@ -75,12 +90,13 @@ $(document).ready(function (e) {
         let countDisplay = (count < 10) ? '0' + count : count;
 
         setTimeout(function (e) {
-          $('#count').html(countDisplay);
 
           if (copyCurrentStep.length === 0) {
             console.log('============== Stop Displaying Steps Waiting for User Input Now ==============');
             clearInterval(stepInterval);
           } else {
+            $('#count').html(countDisplay);
+
             stepPart = copyCurrentStep.shift();
             $('.simon-button[data-button-number="' + stepPart + '"]').addClass('light');
 
@@ -185,12 +201,16 @@ $(document).ready(function (e) {
 
   $('.simon-button').on('mousedown', function (e) {
 
-    if (gameStatus === 'on' && isWaiting) {
+    if (gameStatus === 'on' && isWaiting && !isComplete) {
       $(this).addClass('light');
 
     } else {
-      if (gameStatus === 'on')
+
+      if(isComplete){
+        console.log('Game is Completed');
+      }else if (gameStatus === 'on') {
         console.log('------ Waiting for user turn ------------');
+      }
     }
 
   });
