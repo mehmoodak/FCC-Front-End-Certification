@@ -10,7 +10,7 @@ $(document).ready(function (e) {
   let stepInterval = null; // for showing steps to the user
   let displayInterval = null; // display on and off animation on start
   let pauseTime = 0; // time in ms to pause between displaying steps
-  let isWaiting = null // if game is waiting for user feedback after showing the steps (keep user away to interfere in between)
+  let isWaiting = true // if game is waiting for user feedback after showing the steps (keep user away to interfere in between)
   let userInput = [] // for storing user inputs
   let isStrictMode = false;
   let isComplete = false;
@@ -22,28 +22,31 @@ $(document).ready(function (e) {
     displayInterval = setInterval(function (e) {
       $('.simon-display').toggleClass('on');
 
-      if(isComplete){
-        $('.simon-button[data-button-number="'+ stepPart +'"]').addClass('light');
+      if (isComplete) {
+        $('.simon-button[data-button-number="' + stepPart + '"]').toggleClass('light');
       }
       hideAndSeek++;
       if (hideAndSeek >= 4) {
         $('.simon-display').addClass('on');
-        if(isComplete) {
+        if (isComplete) {
           $('.simon-button.light').removeClass('light');
         }
         clearInterval(displayInterval);
       }
-    }, 400);
+    }, 300);
   }
 
-  function initializingGame() {
-    steps = [];
-    for (let i = 0; i < 20; i++) {
-      let step = Math.floor((Math.random() * 4) + 1);
-      steps.push(step);
+  function initializingGame(isStepsRenew = true) {
+    if(isStepsRenew) {
+      steps = [];
+      for (let i = 0; i < 20; i++) {
+        let step = Math.floor((Math.random() * 4) + 1);
+        steps.push(step);
+      }
     }
 
-    steps = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4];
+    // For help in testing
+    // steps = [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4];
 
     displayAnimation();
     // logs();
@@ -68,6 +71,7 @@ $(document).ready(function (e) {
     }
 
     function showSteps() {
+
       let intervalDelayToCut = count * 35; // For Increasing Speed
       let pauseDelayToCut = count * 12; // For Increasing Speed
 
@@ -92,6 +96,7 @@ $(document).ready(function (e) {
         setTimeout(function (e) {
 
           if (copyCurrentStep.length === 0) {
+            isWaiting = true;
             console.log('============== Stop Displaying Steps Waiting for User Input Now ==============');
             clearInterval(stepInterval);
           } else {
@@ -100,10 +105,6 @@ $(document).ready(function (e) {
             stepPart = copyCurrentStep.shift();
             $('.simon-button[data-button-number="' + stepPart + '"]').addClass('light');
 
-            if (copyCurrentStep.length === 0) {
-              isWaiting = true;
-            }
-
             logs(); // only show logs when steps are calculated
           }
 
@@ -111,6 +112,8 @@ $(document).ready(function (e) {
 
       }, intervalTime);
     }
+
+    clearInterval(stepInterval);
 
     userInput = []; // resetting user input to check gain from start for nextStep
     if (!isAgain) {
@@ -131,12 +134,15 @@ $(document).ready(function (e) {
     $('.strict-indicator').removeClass('on');
   }
 
-  function resetGame() {
+  function resetGame(isStepsRenew = true) {
     count = 0;
     currentStep = null;
-    steps = null;
+    if(isStepsRenew) {
+      steps = null;
+    }
     stepPart = null;
     isWaiting = false;
+    isComplete = false;
 
     if (stepInterval) {
       clearInterval(stepInterval);
@@ -192,9 +198,13 @@ $(document).ready(function (e) {
 
   $('#start-game').click(function (e) {
     if (gameStatus === 'on') {
-      resetGame();
-
-      initializingGame();
+      if(!steps) {
+        resetGame();
+        initializingGame();
+      }else{
+        resetGame(false);
+        initializingGame(false);
+      }
       gameStepping();
     }
   });
@@ -206,9 +216,9 @@ $(document).ready(function (e) {
 
     } else {
 
-      if(isComplete){
+      if (isComplete) {
         console.log('Game is Completed');
-      }else if (gameStatus === 'on') {
+      } else if (gameStatus === 'on') {
         console.log('------ Waiting for user turn ------------');
       }
     }
@@ -242,9 +252,9 @@ $(document).ready(function (e) {
       } else {
         isWaiting = false;
 
-        if(!isStrictMode) {
+        if (!isStrictMode) {
           gameStepping(true);
-        }else{
+        } else {
           displayAnimation('! !');
 
           setTimeout(function (e) {
@@ -259,10 +269,10 @@ $(document).ready(function (e) {
   });
 
   $('#strict-mode').on('click', function (e) {
-    if(gameStatus === 'on') {
+    if (gameStatus === 'on') {
       $(this).children('.strict-indicator').toggleClass('on');
       isStrictMode = (isStrictMode === false) ? true : false;
-    }else{
+    } else {
       console.log('Game is Turned OFF.');
     }
   });
