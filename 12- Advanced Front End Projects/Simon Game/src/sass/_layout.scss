@@ -60,6 +60,7 @@ input:focus {
         border-radius: 50%;
         justify-content: center;
         align-items: center;
+        transition: 0.3s;
       }
 
       .msg-wrapper.show{

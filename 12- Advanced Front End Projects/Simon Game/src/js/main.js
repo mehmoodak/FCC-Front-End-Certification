@@ -53,7 +53,7 @@ $(document).ready(function (e) {
     // Setting the new current steps from the steps array and if steps exceed than 20 then show WINNING MSG
     function setNewSteps() {
       currentStep = [];
-      if (count < 10) { // set new steps
+      if (count < 20) { // set new steps
         for (var i = 0; i < count + 1; i++) {
           currentStep.push(steps[i]);
         }
