@@ -50,6 +50,11 @@ gulp.task('plugins', function () {
       .pipe(gulp.dest(location+ "plugins"));
 })
 
+gulp.task('assets', function () {
+  gulp.src(["./src/assets/**/*.*"], {base: "./src/assets"})
+      .pipe(gulp.dest(location+ "assets"));
+});
+
 gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
       .pipe(sourcemaps.init())
@@ -95,4 +100,4 @@ gulp.watch('./src/images/**/*.*', ['images']);
 
 // ========================= Default ===================
 
-gulp.task('default', ['clean', 'html', 'sass', 'js', 'plugins', 'serve', 'images', 'css']);
+gulp.task('default', ['clean', 'html', 'sass', 'js', 'assets', 'plugins', 'serve', 'images', 'css']);

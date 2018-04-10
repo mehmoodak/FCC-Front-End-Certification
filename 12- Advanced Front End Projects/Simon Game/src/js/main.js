@@ -112,7 +112,9 @@ $(document).ready(function (e) {
             $('#count').html(countDisplay);
 
             stepPart = copyCurrentStep.shift();
+            // debugger;
             $('.simon-button[data-button-number="' + stepPart + '"]').addClass('light');
+            document.getElementById('audio'+stepPart).cloneNode(true).play();
 
             logs(); // only show logs when steps are calculated
           }
@@ -144,6 +146,14 @@ $(document).ready(function (e) {
   }
 
   function resetGame(isStepsRenew = true) {
+
+    if (stepInterval) {
+      clearInterval(stepInterval);
+    }
+    if (displayInterval) {
+      clearInterval(displayInterval);
+    }
+
     count = 0;
     currentStep = null;
     if(isStepsRenew) {
@@ -152,13 +162,6 @@ $(document).ready(function (e) {
     stepPart = null;
     isWaiting = false;
     isComplete = false;
-
-    if (stepInterval) {
-      clearInterval(stepInterval);
-    }
-    if (displayInterval) {
-      clearInterval(displayInterval);
-    }
 
     $('.simon-button.light').removeClass('light');
 
@@ -224,6 +227,9 @@ $(document).ready(function (e) {
 
     if (gameStatus === 'on' && isWaiting && !isComplete) {
       $(this).addClass('light');
+
+      let value = $(this).attr('data-button-number');
+      document.getElementById('audio'+value).cloneNode(true).play();
 
     } else {
 
