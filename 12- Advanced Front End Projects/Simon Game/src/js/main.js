@@ -82,7 +82,7 @@ $(document).ready(function (e) {
     function showSteps() {
 
       let intervalDelayToCut = count * 35; // For Increasing Speed
-      let pauseDelayToCut = count * 12; // For Increasing Speed
+      let pauseDelayToCut = count * 8; // For Increasing Speed
 
       let intervalTime;
 
