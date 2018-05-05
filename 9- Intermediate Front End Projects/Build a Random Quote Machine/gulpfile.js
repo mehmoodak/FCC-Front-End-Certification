@@ -9,7 +9,6 @@ const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const minifyjs = require('gulp-js-minify');
 const clean = require('gulp-clean');
-const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
 let environment = 'development';
@@ -68,20 +67,13 @@ gulp.task('serve', function () {
   });
 });
 
-gulp.task('images', function () {
-  gulp.src('src/images/**/*.*', {base: "./src/images"})
-      .pipe(imagemin())
-      .pipe(gulp.dest(location + 'images'))
-});
-
 // ========================= Watches ===================
 
 gulp.watch('./src/*.html', ['html']);
 gulp.watch('./src/js/*.js', ['js']);
 gulp.watch('./src/sass/**/*.scss', ['sass']);
 gulp.watch('./src/plugins/**/*.*', ['plugins']);
-gulp.watch('./src/images/**/*.*', ['images']);
 
 // ========================= Default ===================
 
-gulp.task('default', ['clean', 'html', 'sass', 'js', 'plugins', 'serve', 'images']);
+gulp.task('default', ['clean', 'html', 'sass', 'js', 'plugins', 'serve']);
