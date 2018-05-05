@@ -1,7 +1,7 @@
 {
   "name": "wikipedia-viewer",
   "version": "1.0.0",
-  "description": "This project is for FreeCodeCamp Front-end certification and it uses the wikipedia API to search for articles and also show random article.",
+  "description": "This project is implementing the API of the wikipedia which show the results of the articles according to the string searched, user can then read the article on wikipedia by clicking on one of the search result. It also let the user read random article by clicking on the random button.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

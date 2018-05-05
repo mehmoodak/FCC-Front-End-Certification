@@ -1,7 +1,7 @@
 {
   "name": "local-weather-app",
   "version": "1.0.0",
-  "description": "This project is being made for getting front end certification from freecodecamp. This is a weather app it will get you location and then show you the weather based on your location.",
+  "description": "This project is implementing the weather API which shows the current weather according to the location of the user and it also gave user the functionality to change the temperature units between standard units and metric units. The app also shows different icons based on the weather condition of the user.",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

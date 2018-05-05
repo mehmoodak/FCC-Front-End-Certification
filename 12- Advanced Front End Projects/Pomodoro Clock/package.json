@@ -1,7 +1,7 @@
 {
   "name": "pomodoro-clock",
   "version": "1.0.0",
-  "description": "This is a pomodoro clock in which you can configure the work time and the break time. This project is being made as a part for getting certification from freeCodeCamp.",
+  "description": "The project is based on famous pomodoro clock concept in which the user works for 25 minutes and then take rest for 5 minutes. In the project which the user can also configure the session and break time according to there own needs.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

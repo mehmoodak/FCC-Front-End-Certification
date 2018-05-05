@@ -1,7 +1,7 @@
 {
   "name": "simon-game",
   "version": "1.0.0",
-  "description": "This project is a simon game and it is made as a part of getting certification from freeCodeCamp",
+  "description": "This project is about building the famous Simon Game in which user have to remind the steps which increments one by one till count 20. If the strict mode is one and user enters wrong keys then the game starts from zero.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

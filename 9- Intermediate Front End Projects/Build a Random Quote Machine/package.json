@@ -1,7 +1,7 @@
 {
   "name": "build-a-random-quote-machine",
   "version": "1.0.0",
-  "description": "This is the project of FreeCodeCamp which is needed for their Front End Certification.",
+  "description": "This project implemented the API which shows random quote. These quotes then can be shared to twitter.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

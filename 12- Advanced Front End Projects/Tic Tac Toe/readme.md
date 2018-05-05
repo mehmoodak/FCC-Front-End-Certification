@@ -1,15 +1,10 @@
 # Tic Tac Toe (Minimax Algorithm)
 
-This project is build using gulp as a workflow tool.
+This project is about building the tic tac toe game which can be played between two players and between one player and computer. For computer part I implemented the simple AI algorithm based on minimax which makes the computer unbeatable.
 
 ### Development 
-Run the Project using following commands. These commands create the `build` folder and start the server on `localhost:3000`.
+Feel free to use this code in any way you want and for using run these commands to install dependencies and serve the code. You can make changes easily as this is using live server which reflects changes without reloading the browser.
 
 `npm install`
 
 `gulp`
-
-### Production 
-For production change the value of environment variable to production and then it will create the `dist` folder when you run the project using `gulp`
-
-

@@ -1,15 +1,12 @@
 # Simon Game
 
-This project is build using gulp as a workflow tool.
+This project is about building the famous Simon Game in which user have to remind the steps which increments one by one till count 20. If the strict mode is one and user enters wrong keys then the game starts from zero.
+
+[Play Simon Game](https://codepen.io/maksuperlink/full/bvZdoZ/)
 
 ### Development 
-Run the Project using following commands. These commands create the `build` folder and start the server on `localhost:3000`.
+Feel free to use this code in any way you want and for using run these commands to install dependencies and serve the code. You can make changes easily as this is using live server which reflects changes without reloading the browser.
 
 `npm install`
 
 `gulp`
-
-### Production 
-For production change the value of environment variable to production and then it will create the `dist` folder when you run the project using `gulp`
-
-

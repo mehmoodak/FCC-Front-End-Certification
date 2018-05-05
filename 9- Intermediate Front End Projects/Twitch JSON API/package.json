@@ -1,7 +1,7 @@
 {
   "name": "use-of-twitch-json-api",
   "version": "1.0.0",
-  "description": "This project is made as a part for getting certification from freeCodeCamp. This is using the twitch api to find that whether the given users are online or offline.",
+  "description": "This project is implementing the API from twitch which shows channels given to the app. The app also shows the status of the channels and the additional info if they are online.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,15 +1,12 @@
 # Wikipedia Viewer
 
-This project is build using gulp as a workflow tool.
+This project is implementing the API of the wikipedia which show the results of the articles according to the string searched, user can then read the article on wikipedia by clicking on one of the search result. It also let the user read random article by clicking on the random button.
+
+[View App](https://codepen.io/maksuperlink/full/JLLNMW/)
 
 ### Development 
-Run the Project using following commands. These commands create the `build` folder and start the server on `localhost:3000`.
+Feel free to use this code in any way you want and for using run these commands to install dependencies and serve the code. You can make changes easily as this is using live server which reflects changes without reloading the browser.
 
 `npm install`
 
 `gulp`
-
-### Production 
-For production change the value of environment variable to production and then it will create the `dist` folder when you run the project using `gulp`
-
-

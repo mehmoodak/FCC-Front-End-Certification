@@ -1,15 +1,12 @@
 # Twitch JSON API
 
-This project is build using gulp as a workflow tool.
+This project is implementing the API from twitch which shows channels given to the app. The app also shows the status of the channels and the additional info if they are online.
+
+[View App](https://codepen.io/maksuperlink/full/geeVGw/)
 
 ### Development 
-Run the Project using following commands. These commands create the `build` folder and start the server on `localhost:3000`.
+Feel free to use this code in any way you want and for using run these commands to install dependencies and serve the code. You can make changes easily as this is using live server which reflects changes without reloading the browser.
 
 `npm install`
 
 `gulp`
-
-### Production 
-For production change the value of environment variable to production and then it will create the `dist` folder when you run the project using `gulp`
-
-

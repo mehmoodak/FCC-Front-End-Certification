@@ -1,15 +1,12 @@
 # JavaScript Calculator
 
-This project is build using gulp as a workflow tool.
+This project is about building the simple calculator in which user can perform arithematic operations and can chain the results.
+
+[View Calculator](https://codepen.io/maksuperlink/full/bvKOGN/)
 
 ### Development 
-Run the Project using following commands. These commands create the `build` folder and start the server on `localhost:3000`.
+Feel free to use this code in any way you want and for using run these commands to install dependencies and serve the code. You can make changes easily as this is using live server which reflects changes without reloading the browser.
 
 `npm install`
 
 `gulp`
-
-### Production 
-For production change the value of environment variable to production and then it will create the `dist` folder when you run the project using `gulp`
-
-

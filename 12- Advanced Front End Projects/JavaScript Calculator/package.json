@@ -1,7 +1,7 @@
 {
   "name": "javascript-calculator",
   "version": "1.0.0",
-  "description": "This project is made for getting certification from FreeCodeCamp. It is a simple calculator for arithematic operations. ",
+  "description": "This project is about building the simple calculator in which user can perform arithematic operations and can chain the results.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
