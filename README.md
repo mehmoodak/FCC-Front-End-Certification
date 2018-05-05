@@ -11,3 +11,6 @@ The projects which I completed during my journey are given below:
 * Pomodoro Clock - [View Clock](https://codepen.io/maksuperlink/full/oqPMPZ/)
 * Tic Tac Toe - [Play Game](https://codepen.io/maksuperlink/full/wmQowV/)
 * Simon Game - [Play Game](https://codepen.io/maksuperlink/full/bvZdoZ/)
+
+##### Note : 
+Feel free to use any of the code in any way you like.
